@@ -1,14 +1,16 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
-import ColorModeSwitch from './components/ColorModeSwitch';
+import ColorModeToggle from './components/ColorModeToggle';
 import theme from './theme';
+
+import HeroSection from './components/HeroSection';
 
 const App = () => {
   return (
     <ChakraProvider>
-        <h1>Github Repo App</h1>
-        <ColorModeSwitch />
+        <ColorModeToggle />
+        <HeroSection />
     </ChakraProvider>
   );
 }

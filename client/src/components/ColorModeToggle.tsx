@@ -1,11 +1,12 @@
 import React from 'react';
 import { useColorMode, Switch } from '@chakra-ui/react';
 
-const ColorModeSwitch = () => {
+const ColorModeToggle= () => {
     const { colorMode, toggleColorMode } = useColorMode();
 
     return (
         <Switch
+            defaultChecked={colorMode === 'dark'}
             onChange={toggleColorMode}
             colorScheme="blue"
         />
@@ -13,4 +14,4 @@ const ColorModeSwitch = () => {
     )
 }
 
-export default ColorModeSwitch;
+export default ColorModeToggle;
