@@ -1,9 +1,11 @@
 import React from "react";
-import SearchInput from "./SearchInput";
+import SearchInputBar from "./SearchInputBar";
 
 const HeroSection = () => {
     return (
-        <SearchInput />
+        <>
+            <SearchInputBar />
+        </>
     )
 }
 

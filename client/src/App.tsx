@@ -1,17 +1,21 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
-import ColorModeToggle from './components/ColorModeToggle';
+import NavBar from './components/NavBar';
 import theme from './theme';
+import { Provider } from 'react-redux';
+import { store } from './stores/store';
 
 import HeroSection from './components/HeroSection';
 
 const App = () => {
   return (
-    <ChakraProvider>
-        <ColorModeToggle />
-        <HeroSection />
-    </ChakraProvider>
+    <Provider store={store}>
+      <ChakraProvider theme={theme}>
+          <NavBar />
+          <HeroSection />
+      </ChakraProvider>
+    </Provider>
   );
 }
 
