@@ -41,8 +41,8 @@ export interface FavCounterState {
 }
 
 export interface PaginationProps {
-    currentPage: number,
-    totalPages: number
+    totalPages: number,
+    setRepos: React.Dispatch<React.SetStateAction<ISearchResult>>
 }
 
 export type AllowedSort = 'best match' | 'stars' | 'forks' | 'help-wanted-issues' | 'updated';
@@ -55,6 +55,18 @@ export interface IParams {
     order: AllowedOrder,
     per_page: number,
     page: number
+}
+
+export interface ParamSettingsState {
+    q: string,
+    sort: AllowedSort,
+    order: AllowedOrder,
+    per_page: number,
+    page: number
+}
+
+export interface SetStateProps {
+    setRepos: React.Dispatch<React.SetStateAction<ISearchResult>>
 }
 
 

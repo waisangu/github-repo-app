@@ -5,7 +5,6 @@ import NavBar from './components/NavBar';
 import theme from './theme';
 import { Provider } from 'react-redux';
 import { store } from './stores/store';
-
 import HeroSection from './components/HeroSection';
 
 const App = () => {

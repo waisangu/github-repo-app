@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import favCounterReducer from '../features/favCounter/favCounterSlice';
+import paramSettingsReducer from '../features/paramSettings/paramSettingsSlice';
 
 export const store = configureStore({
   reducer: {
-    favCounter: favCounterReducer
+    favCounter: favCounterReducer,
+    paramSettings: paramSettingsReducer
   },
 });
 
