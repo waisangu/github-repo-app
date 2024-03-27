@@ -53,6 +53,9 @@ export interface IServerResponseItem {
   stargazers_count: number;
 }
 
+export interface IServerRequestItem extends IServerResponseItem {}
+
 export interface ServerResponseProps {
   result: IServerResponseItem;
 }
+

@@ -2,7 +2,7 @@ import { useRouteError } from "react-router-dom";
 import React from "react";
 import { Center, Heading, Text, Stack } from "@chakra-ui/react";
 
-// Generic error page if routing goes wrong
+// Generic error page if routing goes wrong such as server not working
 export default function ErrorPage() {
   const error: any = useRouteError();
   console.error(error);

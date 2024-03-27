@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Flex, Button, IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { PaginationFavsProps } from "../types/types";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../stores/store";
-import { changePage } from "../features/paramSettings/paramSettingsSlice";
-import { fetchApi } from "../utils/fetchApi";
 
+// Could have possibly used generic typing to reuse Pagination component
 const PaginationFavs = ({
   setPage,
   currentPage,
   totalPages,
 }: PaginationFavsProps) => {
+  /* Passed the useState of parent component to rerender 
+    new portion of the array if page changes onclick  */
   const handlePageChange = (page: number): void => {
     if (page >= 1 && page <= totalPages) {
       setPage(page);

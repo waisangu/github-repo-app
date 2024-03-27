@@ -19,12 +19,12 @@ const FavoritesPage = () => {
   const perPage: number = 10;
 
   // Retrieves the global count of favorite repositories
-  const currentCount = useSelector(
+  const currentCount: number = useSelector(
     (state: RootState) => state.favCounter.value
   );
 
   // Rerender the total count of favorited repositories anytime the repo array changes
-  useEffect(() => {
+  useEffect((): void => {
     fetch("http://localhost:8000/favorites")
       .then((response) => response.json())
       .then((data) => setRepos(data))
@@ -42,18 +42,21 @@ const FavoritesPage = () => {
           </Heading>
         </CardHeader>
       </Card>
-      {/* Conditional check to see if repos exists and then render the array if it does */}
-      {repos &&
-        repos.map((repo: IServerResponseItem) => {
-          return <FavoriteRepoCard key={`${repo.id}`} result={repo} />;
-        })}
-      {repos &&
+      {/* Conditional check to see if repos exists and then render the correct portion of the array if it does */}
+      {repos.length > 0 &&
+        repos
+          .slice((page - 1) * perPage, page + perPage)
+          .map((repo: IServerResponseItem) => {
+            return <FavoriteRepoCard key={`${repo.id}`} result={repo} />;
+          })}
+      {/* Component only renders if there are favorited repos */}
+      {repos.length > 0 && (
         <PaginationFavs
           setPage={setPage}
           currentPage={page}
           totalPages={Math.ceil(repos.length / perPage)}
         />
-      }
+      )}
     </>
   );
 };

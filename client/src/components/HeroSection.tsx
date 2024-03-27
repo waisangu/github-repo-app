@@ -44,7 +44,7 @@ const HeroSection = () => {
     }
   };
 
-  const handleOnClick = async () => {
+  const handleOnClick = async (): Promise<void> => {
     try {
       const results = await fetchApi(params);
       // Only update state of repos if fetch from API returns json, else do nothing

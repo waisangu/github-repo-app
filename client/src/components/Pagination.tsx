@@ -22,7 +22,7 @@ const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
   /* Refetches the API whenever parent or sibling components change the parameter settings, 
   allows for correct repos to be shown, the entire API response is not stored in state */
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         const results = await fetchApi(params);
         // Only update state of repos if fetch from API returns json, else do nothing
@@ -42,7 +42,7 @@ const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
       <IconButton
         icon={<ChevronLeftIcon />}
         aria-label="Previous page"
-        onClick={() => handlePageChange(params.page - 1)}
+        onClick={(): void => handlePageChange(params.page - 1)}
         /* Handles negative pages  */
         isDisabled={params.page === 1}
         marginRight={2}
@@ -53,7 +53,7 @@ const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
       <IconButton
         icon={<ChevronRightIcon />}
         aria-label="Next page"
-        onClick={() => handlePageChange(params.page + 1)}
+        onClick={(): void => handlePageChange(params.page + 1)}
         /* Page state cannot exceed total page */
         isDisabled={params.page === totalPages}
         marginLeft={2}

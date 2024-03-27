@@ -1,17 +1,16 @@
 {
-  "name": "client",
+  "name": "Github Repo App",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find And Save Your Github Repositories Without An Account",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack serve --open",
-    "build": "",
-    "start": "NODE_ENV=production",
+    "build": "NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Wai San Gu",
+  "license": "MIT",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
@@ -32,6 +31,7 @@
     "@types/react-dom": "^18.2.22",
     "css-loader": "^6.10.0",
     "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.3",

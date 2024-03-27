@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { StarIcon } from "@chakra-ui/icons";
-import { ApiResponseProps } from "../types/types";
+import { ApiResponseProps, IServerRequestItem } from "../types/types";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "../features/favCounter/favCounterSlice";
 import { fetchServerDelete } from "../utils/fetchServerDelete";
@@ -23,15 +23,15 @@ const SearchResultCard = ({ result }: ApiResponseProps) => {
   // RTK hook to update state of global favorite count
   const dispatch = useDispatch();
 
-  const handleOnClick = async () => {
+  const handleOnClick = async (): Promise<void> => {
     // Find the exact button being clicked
-    const btn = document.querySelector(`#btn-${result.id}`);
+    const btn: HTMLElement | null = document.querySelector(`#btn-${result.id}`);
 
     // Use the text of the button for the logic later in the function
-    const btnText = btn?.textContent;
+    const btnText: string | null | undefined = btn?.textContent;
 
     // Format object to be passed into our fetch requests
-    const requestData = {
+    const requestData: IServerRequestItem = {
       id: result.id,
       owner_avatar_url: result.owner.avatar_url,
       html_url: result.html_url,
