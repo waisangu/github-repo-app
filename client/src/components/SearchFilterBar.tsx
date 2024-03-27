@@ -4,24 +4,26 @@ import { AllowedSort, AllowedOrder, SetStateProps } from "../types/types";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../stores/store';
 import { changeSort, changeOrder } from "../features/paramSettings/paramSettingsSlice";
-import { fetchResults } from "../utils/fetchResults";
+import { fetchApi } from "../utils/fetchApi";
 
 const SearchFilterBar = ({setRepos}: SetStateProps) => {
     const params = useSelector((state: RootState) => state.paramSettings);
     const dispatch = useDispatch();
 
-    const sortByOptions: AllowedSort[] = ['best match', 'stars', 'forks', 'help-wanted-issues', 'updated'];
+    const sortByOptions: AllowedSort[] = ['stars', 'forks', 'help-wanted-issues', 'updated'];
     const orderByOptions: AllowedOrder[] = ['desc', 'asc'];
 
-    const capitalizeFirstLetter = (word: string):string => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
+    const capitalizeFirstLetter = (word: string| undefined):string => {
+        return word === undefined 
+        ? "Best Match" :
+        word.charAt(0).toUpperCase() + word.slice(1);
     }
 
     const handleSortChange = async (e: any) => {
         const { value } = e.target as unknown as { value: AllowedSort };
         dispatch(changeSort(value));
         try {
-            const results = await fetchResults(params);
+            const results = await fetchApi(params);
             if (results) {
                 setRepos(results);
             }
@@ -34,7 +36,7 @@ const SearchFilterBar = ({setRepos}: SetStateProps) => {
         const { value } = e.target as unknown as { value: AllowedOrder };
         dispatch(changeOrder(value));
         try {
-            const results = await fetchResults(params);
+            const results = await fetchApi(params);
             if (results) {
                 setRepos(results);
             }
@@ -48,6 +50,7 @@ const SearchFilterBar = ({setRepos}: SetStateProps) => {
             <Stack direction='row' marginTop='0.25em'>
                 <Select defaultValue={params.sort} width='25%' onChange={handleSortChange}>
                     <option hidden disabled value="">Sort By</option>
+                    <option value={undefined}>Best Match</option>
                     {sortByOptions.map((option, i) => (
                         <option key={`SortBy-${i}`} value={option}>{capitalizeFirstLetter(option)}</option>
                     ))}

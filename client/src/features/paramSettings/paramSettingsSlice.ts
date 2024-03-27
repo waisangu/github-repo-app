@@ -3,7 +3,7 @@ import { ParamSettingsState, AllowedSort, AllowedOrder } from "../../types/types
 
 const initialState: ParamSettingsState = {
     q: '',
-    sort: 'best match',
+    sort: undefined,
     order: 'desc',
     per_page: 10,
     page: 1

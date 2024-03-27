@@ -5,24 +5,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../stores/store';
 import { changeQ } from "../features/paramSettings/paramSettingsSlice";
 import SearchResultCard from './SearchResultCard';
-import { ISearchResult, ISearchResultItems, IParams } from '../types/types';
+import { IApiResponse } from '../types/octokit';
 import SearchFilterBar from './SearchFilterBar';
 import Pagination from './Pagination';
-import { fetchResults } from '../utils/fetchResults';
+import { fetchApi } from '../utils/fetchApi';
 import SearchResultAlert from './SearchResultAlert'
 
 const HeroSection = () => {
     const params = useSelector((state: RootState) => state.paramSettings);
     const dispatch = useDispatch();
-    const [repos, setRepos] = useState<ISearchResult>({
+    const [repos, setRepos] = useState<IApiResponse>({
         total_count: -1,
+        incomplete_results: true,
         items: []
     });
     
     const handleKeyDown = async (e: KeyboardEvent) => {
         if ((e as KeyboardEvent).key === 'Enter') {
             try {
-                const results = await fetchResults(params);
+                const results = await fetchApi(params);
                 if (results) {
                     setRepos(results);
                 }
@@ -33,8 +34,9 @@ const HeroSection = () => {
     }
 
     const handleOnClick = async () => {
+        console.log(repos)
         try {
-            const results = await fetchResults(params);
+            const results = await fetchApi(params);
             if (results) {
                 setRepos(results);
             }

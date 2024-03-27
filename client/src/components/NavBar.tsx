@@ -13,7 +13,7 @@ const NavBar = () => {
                     <Icon as={DiGithubBadge} boxSize={12} />
                 </Link>
                 <Link href='/'>
-                    <Heading size='md'>Github Repo App</Heading>    
+                    <Heading as="ins" size='md'>Github Repo App</Heading>    
                 </Link> 
             </Stack>
             <Stack direction='row' alignItems='center' marginLeft='auto'>

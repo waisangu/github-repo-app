@@ -5,7 +5,7 @@ import { PaginationProps } from '../types/types';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../stores/store';
 import { changePage } from '../features/paramSettings/paramSettingsSlice';
-import { fetchResults } from "../utils/fetchResults";
+import { fetchApi } from "../utils/fetchApi";
 
 const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
     const params = useSelector((state: RootState) => state.paramSettings);
@@ -15,7 +15,7 @@ const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
         if (page >= 1 && page <= totalPages) {
             dispatch(changePage(page))
             try {
-                const results = await fetchResults(params);
+                const results = await fetchApi(params);
                 if (results) {
                     setRepos(results);
                 }
