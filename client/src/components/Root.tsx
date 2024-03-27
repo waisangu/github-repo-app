@@ -1,14 +1,13 @@
-import React from 'react';
-import NavBar from './NavBar';
-import HeroSection from './HeroSection';
-
+import React from "react";
+import NavBar from "./NavBar";
+import HeroSection from "./HeroSection";
 
 const Root = () => {
   return (
-      <>
-          <NavBar />
-          <HeroSection />
-      </>
+    <>
+      <NavBar />
+      <HeroSection />
+    </>
   );
 };
 

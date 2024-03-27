@@ -1,84 +1,97 @@
-import React, { KeyboardEvent, useEffect, useState } from 'react';
-import { InputGroup, Input, InputLeftElement, InputRightAddon, Button } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../stores/store';
+import React, { KeyboardEvent, useState } from "react";
+import {
+  InputGroup,
+  Input,
+  InputLeftElement,
+  InputRightAddon,
+  Button,
+} from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../stores/store";
 import { changeQ } from "../features/paramSettings/paramSettingsSlice";
-import SearchResultCard from './SearchResultCard';
-import { IApiResponse } from '../types/octokit';
-import SearchFilterBar from './SearchFilterBar';
-import Pagination from './Pagination';
-import { fetchApi } from '../utils/fetchApi';
-import SearchResultAlert from './SearchResultAlert'
+import SearchResultCard from "./SearchResultCard";
+import { IApiResponse } from "../types/octokit";
+import SearchFilterBar from "./SearchFilterBar";
+import Pagination from "./Pagination";
+import { fetchApi } from "../utils/fetchApi";
+import SearchResultAlert from "./SearchResultAlert";
 
 const HeroSection = () => {
-    const params = useSelector((state: RootState) => state.paramSettings);
-    const dispatch = useDispatch();
-    const [repos, setRepos] = useState<IApiResponse>({
-        total_count: -1,
-        incomplete_results: true,
-        items: []
-    });
-    
-    const handleKeyDown = async (e: KeyboardEvent) => {
-        if ((e as KeyboardEvent).key === 'Enter') {
-            try {
-                const results = await fetchApi(params);
-                if (results) {
-                    setRepos(results);
-                }
-            } catch (error) {
-                return console.log(error);
-            }
-        }
-    }
+  // RTK hooks to call and use global paramter settings state
+  const params = useSelector((state: RootState) => state.paramSettings);
+  const dispatch = useDispatch();
 
-    const handleOnClick = async () => {
-        console.log(repos)
-        try {
-            const results = await fetchApi(params);
-            if (results) {
-                setRepos(results);
-            }
-        } catch (error) {
-            return console.error(error);
-        }
-    }
+  // Initially total count has to be -1 for the conditional rendering logic
+  const [repos, setRepos] = useState<IApiResponse>({
+    total_count: -1,
+    incomplete_results: true,
+    items: [],
+  });
 
-    return (
-        <>
-            <InputGroup>
-                <InputLeftElement pointerEvents='none'> 
-                    <SearchIcon color='gray.300'/>
-                </InputLeftElement>
-                <Input 
-                    type='text'
-                    placeholder='Search for GitHub Repository'
-                    onChange={(e) => dispatch(changeQ(e.target.value))}
-                    onKeyDown={handleKeyDown}
-                />
-                <InputRightAddon p={0}>
-                    <Button 
-                        borderLeftRadius={0} 
-                        onClick={handleOnClick}
-                    >
-                        Search
-                    </Button>
-                </InputRightAddon>
-            </InputGroup>
-            <SearchFilterBar setRepos={setRepos}/>
-            {repos.total_count > 0 && repos.items.map((repo) => {
-                return (
-                    <SearchResultCard
-                        key={`${repo.id}`}
-                        result={repo}
-                    />
-                )
-            })}
-            {repos.total_count === 0 && <SearchResultAlert/>}
-            {repos.total_count > 0 && <Pagination setRepos={setRepos} totalPages={Math.ceil(repos.total_count/params.per_page)}/>}
-        </>
-    )
-}
+  // Handles entering the input with Enter key instead of clicking Search button
+  const handleKeyDown = async (e: KeyboardEvent) => {
+    if ((e as KeyboardEvent).key === "Enter") {
+      try {
+        const results = await fetchApi(params);
+        // Only update state of repos if fetch from API returns json, else do nothing
+        if (results) {
+          setRepos(results);
+        }
+      } catch (error) {
+        return console.log(error);
+      }
+    }
+  };
+
+  const handleOnClick = async () => {
+    try {
+      const results = await fetchApi(params);
+      // Only update state of repos if fetch from API returns json, else do nothing
+      if (results) {
+        setRepos(results);
+      }
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+
+  return (
+    <>
+      <InputGroup>
+        <InputLeftElement pointerEvents="none">
+          <SearchIcon color="gray.300" />
+        </InputLeftElement>
+        <Input
+          type="text"
+          placeholder="Search for GitHub Repository"
+          onChange={(e) => dispatch(changeQ(e.target.value))}
+          onKeyDown={handleKeyDown}
+        />
+        <InputRightAddon p={0}>
+          <Button borderLeftRadius={0} onClick={handleOnClick}>
+            Search
+          </Button>
+        </InputRightAddon>
+      </InputGroup>
+      <SearchFilterBar />
+      {/* Only renders if API returns one or more items */}
+      {repos.total_count > 0 &&
+        repos.items.map((repo) => {
+          return <SearchResultCard key={`${repo.id}`} result={repo} />;
+        })}
+      {/* Error component if API returns nothing from search */}
+      {repos.total_count === 0 && <SearchResultAlert />}
+      {/* Only renders if API returns one or more items */}
+      {repos.total_count > 0 && (
+        <Pagination
+          setRepos={setRepos}
+          /* Calculates the total pages to display */
+          totalPages={Math.ceil(repos.total_count / params.per_page)}
+        />
+      )}
+    </>
+  );
+};
 
 export default HeroSection;

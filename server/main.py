@@ -21,6 +21,6 @@ app.add_middleware(
 
 app.include_router(favorites.router)
 
-@app.get("/")
-def root():
-    return {"message" : "Welcome"}
+# @app.get("/")
+# def root():
+#     return {"message" : "Welcome"}
