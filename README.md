@@ -16,7 +16,7 @@
 - [License](#license)
 
 ## About Github Repo App
-Search for public Github repositories by name and save them to a favorites list. The project uses React, TypeScript, React Router, Redux, and Chakra UI for the frontend; Python and FastAPI for the backend; webpack for bundling, Jest and pytest for testing, and Docker for containerization. 
+Search for public Github repositories by name and save them to a favorites list. The project uses React, TypeScript, React Router, Redux, and Chakra UI for the frontend; Python and FastAPI for the backend; webpack for bundling and Docker for containerization. 
 
 ## Demo
 | Gifs                                              | Gifs                                           |
