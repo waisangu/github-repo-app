@@ -34,6 +34,7 @@ Search for public Github repositories by name and save them to a favorites list.
 - **STEP 1**: In your terminal, change directory into where you want the app installed. Copy and paste the following:
     ```bash
     git clone https://github.com/waisangu/github-repo-app.git
+    cd github-repo-app
     ```
 - **STEP 2**: If you have Docker installed, run the following command and skip to Step 5:
     ```bash
