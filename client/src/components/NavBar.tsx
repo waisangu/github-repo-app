@@ -6,7 +6,7 @@ import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import SideDrawer from "./SideDrawer";
 
 // NavBar containing links to repo of this project and root directory
-const NavBar = () => {
+const NavBar = ({}) => {
   return (
     <Stack direction="row" alignItems="center" paddingY="0.5em">
       <Stack direction="row" alignItems="center">

@@ -15,6 +15,8 @@ const FavoritesPage = () => {
   // Keep track of the repositories in the database to quickly rerender list on unsave
   const [repos, setRepos] = useState<IServerResponseItem[]>(currentRepos);
 
+  /* Keep track of the page number for PaginationFavs component and uses 
+  page number for logic of repos array to render */
   const [page, setPage] = useState<number>(1);
   const perPage: number = 10;
 
@@ -42,7 +44,7 @@ const FavoritesPage = () => {
           </Heading>
         </CardHeader>
       </Card>
-      {/* Conditional check to see if repos exists and then render the correct portion of the array if it does */}
+      {/* Conditional check to see if repos exists and then render the just a portion of the array depening on page number */}
       {repos.length > 0 &&
         repos
           .slice((page - 1) * perPage, page + perPage)

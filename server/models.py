@@ -1,4 +1,5 @@
+# Simulates the tables for our database
+# **kwargs allows for any number of key value pair
 class FavRepo:
-    def _init__(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)

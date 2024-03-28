@@ -31,7 +31,8 @@ const SearchFilterBar = () => {
       : word.charAt(0).toUpperCase() + word.slice(1);
   };
 
-  // Consolidated the handle into a single function to keep code DRY
+  /* Consolidated the handle into a single function to keep code DRY, 
+  both handlers want to change the same global parameter settings */
   const handleChange = async (e: FormEvent) => {
     const { value } = e.target as HTMLSelectElement;
 

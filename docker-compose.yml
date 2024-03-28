@@ -1,21 +1,20 @@
-version: '3'
+version: '3.8'
+
 services:
-  server:
-    build: .
+  client:
+    build:
+      context: . # path to directory of dockerfile
+      dockerfile: Dockerfile.client
     ports:
-      - 8000:8000
+      - "8080:8080"  # Docker host port : port in container
+    volumes: # For persisting data if required
+      - ./client:/usr/src/client
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8000:8000" 
     volumes:
-      - ./:/usr/src/app:ro
-    environment:
-    command:  bash -c "uvicorn server.main:app --host 0.0.0.0 --port 8000 --reload"
-    depends_on:
-      - postgres
-  
-  postgres:
-    image: postgres
-    environment:
-    volumes:
-      - postgres-db:/var/lib/postgresql/data 
-  
-volumes:
-  
+      - ./server:/usr/src/server

@@ -1,11 +1,15 @@
+# Simple database class that stores data in a list
 class Database:
     def __init__(self):
         self.data = []
 
     def insert(self, repo):
         self.data.append(repo)
+
+    def get_all(self):
+        return self.data
     
-    def getById(self, id):
+    def get_by_id(self, id):
         
         for repo in self.data:
             if repo.id == id:
@@ -24,7 +28,7 @@ class Database:
             print(f"Repository does not exist")
             return None
 
-    
+    # Surface level methods to mock database operations
     def connect(self):
         print('Database connection successful')
 
@@ -33,6 +37,3 @@ class Database:
 
     def close(self):
         print('Database connection closed successfully')
-
-
-db = Database()
