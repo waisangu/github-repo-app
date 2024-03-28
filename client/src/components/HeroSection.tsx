@@ -29,22 +29,8 @@ const HeroSection = () => {
     items: [],
   });
 
-  // Handles entering the input with Enter key instead of clicking Search button
-  const handleKeyDown = async (e: KeyboardEvent) => {
-    if ((e as KeyboardEvent).key === "Enter") {
-      try {
-        const results = await fetchApi(params, "/search/repositories", "GET");
-        // Only update state of repos if fetch from API returns json, else do nothing
-        if (results) {
-          setRepos(results);
-        }
-      } catch (error) {
-        return console.log(error);
-      }
-    }
-  };
-
-  const handleOnClick = async (): Promise<void> => {
+  // Reuse function for both handleKeyDown and handleOnClick
+  const fetchUpdateRepo = async ():Promise<void> => {
     try {
       const results = await fetchApi(params, "/search/repositories", "GET");
       // Only update state of repos if fetch from API returns json, else do nothing
@@ -52,8 +38,18 @@ const HeroSection = () => {
         setRepos(results);
       }
     } catch (error) {
-      return console.error(error);
+      return console.log(error);
     }
+  }
+
+  // Handles entering the input with Enter key instead of clicking Search button
+  const handleKeyDown = async (e: KeyboardEvent) => {
+    if ((e as KeyboardEvent).key === "Enter") {
+      fetchUpdateRepo()
+  };
+
+  const handleOnClick = async (): Promise<void> => {
+    fetchUpdateRepo()
   };
 
   return (
