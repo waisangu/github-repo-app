@@ -19,7 +19,6 @@
 Search for public Github repositories by name and save them to a favorites list. The project uses React, TypeScript, React Router, Redux, and Chakra UI for the frontend; Python and FastAPI for the backend; webpack for bundling, Jest and pytest for testing, and Docker for containerization. 
 
 ## Demo
-
 ![demo-vid-1](/client/src/assets/demo-vid-1.gif)
 ![demo-vid-2](/client/src/assets/demo-vid-2.gif)
 ![demo-vid-3](/client/src/assets/demo-vid-3.gif)
@@ -31,8 +30,6 @@ Search for public Github repositories by name and save them to a favorites list.
 - Alert page if no repositories were found.
 
 ## User Guide
-<br></br>	
-
 - **STEP 1**: In your terminal, change directory into where you want the app installed. Copy and paste the following:
     ```bash
     git clone https://github.com/waisangu/github-repo-app.git
@@ -56,7 +53,6 @@ Search for public Github repositories by name and save them to a favorites list.
 - **STEP 5**: In your browser, navigate to http://localhost:8080 and use the app!
 
 ## Roadmap
-
 - [x] Implement a search input that allows users to search for GitHub repositories by name. Use the GitHub API to fetch search results.
 - [x] Display the search results in a list. Each list item should include the repository's name, description, and the number of stars.
 - [x] Allow users to save their favorite repositories by clicking on a "Save" button next to each search result.
@@ -67,14 +63,9 @@ Search for public Github repositories by name and save them to a favorites list.
     - [x] POST /favorites - Saves a repository to the favorites list.
     - [x] DELETE /favorites/:id - Removes a repository from the favorites list by its ID.
 - [x] Store the favorite repositories in memory.
-
-
+- [ ] 
 ## Authors
-                             |                                                                   LinkedIn                                                                    |
-| :----------: | :---------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: |
-|  Wai San Gu  |  [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/waisangu)   | [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/waisangu/) |
-
-
+Wai San Gu [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/waisangu)[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/waisangu/)
 
 ## License
 Distributed under MIT License. See `LICENSE.txt` for more information.
