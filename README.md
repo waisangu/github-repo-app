@@ -2,7 +2,7 @@
 
 <div align="center" width="100%">
             
-[![React][React]][![TypeScript][TypeScript]][![ReactRouter][ReactRouter]][![Redux][Redux]][![Python][Python]][![FastAPI][FastAPI]][![Docker][Docker]][![Jest][Jest]][![ChakraUI][ChakraUI]]
+![React][React]![TypeScript][TypeScript]![ReactRouter][ReactRouter]![Redux][Redux]![Python][Python]![FastAPI][FastAPI]![Docker][Docker]![Jest][Jest]![ChakraUI][ChakraUI]
 
 </div>
 
@@ -19,7 +19,7 @@
 Search for public Github repositories by name and save them to a favorites list. The project uses React, TypeScript, React Router, Redux, and Chakra UI for the frontend; Python and FastAPI for the backend; webpack for bundling, Jest and pytest for testing, and Docker for containerization. 
 
 ## Demo
-<br></br>
+
 ![demo-vid-1](/client/src/assets/demo-vid-1.gif)
 ![demo-vid-2](/client/src/assets/demo-vid-2.gif)
 ![demo-vid-3](/client/src/assets/demo-vid-3.gif)
