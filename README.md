@@ -19,9 +19,10 @@
 Search for public Github repositories by name and save them to a favorites list. The project uses React, TypeScript, React Router, Redux, and Chakra UI for the frontend; Python and FastAPI for the backend; webpack for bundling, Jest and pytest for testing, and Docker for containerization. 
 
 ## Demo
-| Vid 1                                             | Vid 2                                            | Vid 3                                             |
-| ------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------- |
-| ![demo-vid-1](/client/src/assets/demo-vid-1.gif)  | ![demo-vid-2](/client/src/assets/demo-vid-2.gif) | ![demo-vid-3](/client/src/assets/demo-vid-3.gif)  |
+| Gifs                                              | Gifs                                           |
+| ------------------------------------------------- | ------------------------------------------------ |
+| ![demo-vid-1](/client/src/assets/demo-vid-1.gif)  | ![demo-vid-2](/client/src/assets/demo-vid-2.gif) |
+| ![demo-vid-3](/client/src/assets/demo-vid-3.gif)  |
 
 ## Features
 - Filter search results by sort option, order, and page.
