@@ -33,7 +33,7 @@ const HeroSection = () => {
   const handleKeyDown = async (e: KeyboardEvent) => {
     if ((e as KeyboardEvent).key === "Enter") {
       try {
-        const results = await fetchApi(params);
+        const results = await fetchApi(params, "/search/repositories", "GET");
         // Only update state of repos if fetch from API returns json, else do nothing
         if (results) {
           setRepos(results);
@@ -46,7 +46,7 @@ const HeroSection = () => {
 
   const handleOnClick = async (): Promise<void> => {
     try {
-      const results = await fetchApi(params);
+      const results = await fetchApi(params, "/search/repositories", "GET");
       // Only update state of repos if fetch from API returns json, else do nothing
       if (results) {
         setRepos(results);

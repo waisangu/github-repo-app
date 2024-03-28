@@ -3,14 +3,13 @@ import { IApiResponse } from "../types/octokit";
 import { Octokit } from "octokit";
 
 export const fetchApi = async (
-  params: IParams
+  params: IParams, url: string, method: string
 ): Promise<IApiResponse | void> => {
   try {
     // Github's official SDK to fetch data from their API
     const octokit = new Octokit();
-    const url = "/search/repositories";
 
-    const response = await octokit.request(`GET ${url}`, {
+    const response = await octokit.request(`${method} ${url}`, {
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
       },
