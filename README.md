@@ -2,7 +2,7 @@
 
 <div align="center" width="100%">
             
-![React][React]![TypeScript][TypeScript]![ReactRouter][ReactRouter]![Redux][Redux]![Python][Python]![FastAPI][FastAPI]![Docker][Docker]![Jest][Jest]![ChakraUI][ChakraUI]
+![React][React]![TypeScript][TypeScript]![ReactRouter][ReactRouter]![Redux][Redux]![Python][Python]![FastAPI][FastAPI]![Docker][Docker]![ChakraUI][ChakraUI]
 
 </div>
 
@@ -73,7 +73,6 @@ Distributed under MIT License. See `LICENSE.txt` for more information.
 
 [React]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
-[Jest]: https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white
 [Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
 [Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
 [ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white

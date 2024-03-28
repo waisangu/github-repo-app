@@ -1,6 +1,6 @@
 FROM node:18.16.0
 WORKDIR /usr/src/client
-COPY client/ /usr/src/client/
+COPY client/ ./
 RUN npm install
 CMD ["npm", "run", "dev"] 
 
