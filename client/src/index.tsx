@@ -1,11 +1,9 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 import { ChakraProvider, ColorModeScript, Container } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
 import theme from "./theme";
 import { Provider } from "react-redux";
 import { store } from "./stores/store";
-import HeroSection from "./components/HeroSection";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
