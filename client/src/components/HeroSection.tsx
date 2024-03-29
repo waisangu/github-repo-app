@@ -32,7 +32,9 @@ const HeroSection = () => {
   // Reuse function for both handleKeyDown and handleOnClick
   const fetchUpdateRepo = async ():Promise<void> => {
     try {
-      const results = await fetchApi(params, "/search/repositories", "GET");
+      const results = await fetchApi(params, "/search/repositories", {
+        "X-GitHub-Api-Version": "2022-11-28",
+      });
       // Only update state of repos if fetch from API returns json, else do nothing
       if (results) {
         setRepos(results);
@@ -46,7 +48,7 @@ const HeroSection = () => {
   const handleKeyDown = async (e: KeyboardEvent) => {
     if ((e as KeyboardEvent).key === "Enter") {
       fetchUpdateRepo()
-  };
+  }};
 
   const handleOnClick = async (): Promise<void> => {
     fetchUpdateRepo()

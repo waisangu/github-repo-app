@@ -1,18 +1,17 @@
 import { IParams } from "../types/types";
 import { IApiResponse } from "../types/octokit";
 import { Octokit } from "octokit";
+import { RequestHeaders } from "@octokit/types";
 
 export const fetchApi = async (
-  params: IParams, url: string, method: string
+  params: IParams, url: string, headers: RequestHeaders
 ): Promise<IApiResponse | void> => {
   try {
     // Github's official SDK to fetch data from their API
     const octokit = new Octokit();
 
-    const response = await octokit.request(`${method} ${url}`, {
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
+    const response = await octokit.request(`GET ${url}`, {
+      headers,
       q: params.q, // Required parameter to fetch data
       sort: params.sort, // Default is best match which has a value of undefined
       order: params.order, // Default is desc

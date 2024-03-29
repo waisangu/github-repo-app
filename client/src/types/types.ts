@@ -58,5 +58,3 @@ export interface IServerRequestItem extends IServerResponseItem {}
 export interface ServerResponseProps {
   result: IServerResponseItem;
 }
-
-

@@ -24,7 +24,9 @@ const Pagination = ({ setRepos, totalPages }: PaginationProps) => {
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        const results = await fetchApi(params, "/search/repositories", "GET");
+        const results = await fetchApi(params, "/search/repositories", {
+          "X-GitHub-Api-Version": "2022-11-28",
+        });
         // Only update state of repos if fetch from API returns json, else do nothing
         if (results) {
           setRepos(results);
