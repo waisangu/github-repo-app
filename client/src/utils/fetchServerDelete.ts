@@ -1,6 +1,6 @@
-import { IServerResponseItem } from "../types/types";
+import { IServerRequestItem } from "../types/types";
 
-export const fetchServerDelete = async (result: IServerResponseItem) => {
+export const fetchServerDelete = async (result: IServerRequestItem): Promise<void> => {
   try {
     // Deletes the favorited repo from database if it exists
     const response = await fetch(

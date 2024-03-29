@@ -40,7 +40,7 @@ const FavoritesPage = () => {
         <CardHeader>
           <Heading size="md">
             {/* State of the database count can be mismatched with global state store on load, condition to handle this condition*/}
-            Total Repositories Favorited: {currentCount || repos.length}
+            Total Repositories Favorited: {currentCount || currentRepos.length}
           </Heading>
         </CardHeader>
       </Card>

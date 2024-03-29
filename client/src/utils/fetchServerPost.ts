@@ -1,6 +1,6 @@
-import { IServerResponseItem } from "../types/types";
+import { IServerRequestItem } from "../types/types";
 
-export const fetchServerPost = async (result: IServerResponseItem) => {
+export const fetchServerPost = async (result: IServerRequestItem): Promise<void> => {
   try {
     // Sends the favorited repo's data to be saved into the database
     const response = await fetch("http://localhost:8000/favorites", {

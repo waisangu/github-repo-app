@@ -9,6 +9,7 @@ import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
 import FavoritesPage from "./components/FavoritesPage";
 import { fetchServerGet } from "./utils/fetchServerGet";
+import { IServerResponseItem } from "./types/types";
 
 // Part of react router to handle routing,
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     /* Function is required to have the favorited 
     repos show on load, else no repos are shown */
-    loader: async () => {
+    loader: async (): Promise<IServerResponseItem | void> => {
       const data = await fetchServerGet();
       return data;
     },
